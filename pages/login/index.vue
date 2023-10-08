@@ -1,14 +1,14 @@
 <template>
-	<view>登录</view>
+	<view>
+		{{ store.count }}
+		<button type="default" @click="store.increment">+</button>
+	</view>
 </template>
 
-<script>
-export default {
-	data() {
-		return {};
-	},
-	methods: {}
-};
+<script setup>
+import { useCounterStore } from '@/store/count.js';
+
+const store = useCounterStore();
 </script>
 
 <style></style>

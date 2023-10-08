@@ -17,26 +17,18 @@ app.$mount()
 
 // #ifdef VUE3
 import {
-	createSSRApp
-} from 'vue'
-// 引⼊ Pinia
+	globalRegister
+} from '@/global/index.js'
 import {
-	createPinia
-} from 'pinia'
-
-// import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import piniaPluginPersistedstate from '@/store/persist.js'
-
+	createSSRApp
+} from 'vue';
 export function createApp() {
-	const app = createSSRApp(App)
-	// 实例化Pinia
-	const pinia = createPinia()
-	// 传递给项⽬应⽤
-	app.use(pinia)
-	// Pinia 持久化插件
-	pinia.use(piniaPluginPersistedstate)
+	const app = createSSRApp(App);
+	// 全局统一注册
+	app.use(globalRegister);
 	return {
 		app
-	}
+	};
 }
+
 // #endif
